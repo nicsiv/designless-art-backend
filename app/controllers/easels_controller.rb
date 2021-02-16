@@ -1,0 +1,3 @@
+class EaselsController < ApplicationController
+   
+end
