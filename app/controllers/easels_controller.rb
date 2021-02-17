@@ -18,7 +18,7 @@ class EaselsController < ApplicationController
    private
 
    def easel_params
-    params.require(:easel).permit(:name, :user_id, :image)
+    params.require(:easel).permit(:name, :user_id, :image, :photo)
    end
 
 
