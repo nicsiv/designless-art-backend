@@ -1,11 +1,25 @@
 class EaselsController < ApplicationController
-   before_action :require_login
+   
 
+   def index
+    easels = Easel.all
+    render json: easels
+   end  
 
+   def create
+    easel = Easel.new(easel_params)
+    if easel.save
+        render json: easel
+    else
+        render json: {error: 'error!'}
+    end 
+   end
 
    private
 
-   def require_login
-    return head(:forbidden) unless session.include? :user_id
+   def easel_params
+    params.require(:easel).permit(:name, :user_id, :image)
    end
+
+
 end
