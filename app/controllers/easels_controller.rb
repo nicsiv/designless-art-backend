@@ -1,5 +1,4 @@
 class EaselsController < ApplicationController
-   
 
    def index
     easels = Easel.all
@@ -13,25 +12,18 @@ class EaselsController < ApplicationController
 
    def create
     easel = Easel.new(easel_params)
-    if easel.save
-        render json: easel
-    else
-        render json: {error: 'error!'}
-    end 
+    easel.save
+    render json: easel
+    
    end
 
    def grab_image
-    url = params[:image]
-    downloaded_image = url
     
+    url = params[:easel][:image]    
     user_id = params[:user_id]
-    user = User.find(user_id)
-    easels = user.easels.count + 1
     easel = Easel.create(easel_params)
-    byebug
-    self.photo.attach(io: downloaded_image, filename: '#{params[user_id]}/#{easels}.jpg')
-
-end
+    
+    end
 
    private
 
