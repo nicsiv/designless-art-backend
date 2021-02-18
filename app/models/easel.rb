@@ -1,9 +1,7 @@
 class Easel < ApplicationRecord
     has_one_attached :photo
     belongs_to :user, foreign_key: "user_id"
-    before_save :grab_image
-
-
+    # before_save :grab_image
 
 end
 
