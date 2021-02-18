@@ -17,14 +17,6 @@ class EaselsController < ApplicationController
     
    end
 
-   def grab_image
-    
-    url = params[:easel][:image]    
-    user_id = params[:user_id]
-    easel = Easel.create(easel_params)
-    
-    end
-
    private
 
    def easel_params
