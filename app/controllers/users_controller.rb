@@ -12,6 +12,18 @@ class UsersController < ApplicationController
       render json: user.to_json(include: :easels )
     end 
 
+    def edit
+      user = User.find_by(id: params[:id])
+      render json: user.to_json(include: easels)
+      byebug
+    end
+
+    def update
+      user = User.find_by(id: params[:id])
+      user.update(username: params[:username])
+      render json: user.to_json(include: easels)
+    end
+
     def destroy
       user = User.find_by(id: params[:id])
       user.destroy
