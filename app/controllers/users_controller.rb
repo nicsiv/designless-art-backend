@@ -1,13 +1,15 @@
 class UsersController < ApplicationController
     def index
         users = User.all
-        render json: users, except: [:created_at, :updated_at]
+        options = {
+          include: :easels
+    }
+        render json: users.to_json(include: :easels)
     end 
 
     def show
       user = User.find_by(id: params[:id])
-      render json: user
-      render json: user.easels
+      render json: user.to_json(include: :easels )
     end 
 
     def auth
